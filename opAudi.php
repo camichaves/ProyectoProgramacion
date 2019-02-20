@@ -24,14 +24,22 @@ die();
 
 
 if (empty($_POST['opcion']) || !empty($_POST['volver'])){
-?>
+    ?>
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
 
 
     <form method="POST">                  
     <input type="hidden" name="opcion" value="reg">
     <input value="Ver Registros de Auditoria" type="submit">
 </form>
-
+<form method="POST">
+    <input type="hidden" name="opcion" value="arch">
+    <input value="Descargar archivo de auditorias" type="submit">
+</form>
 <?php
 
 }else if($_POST["opcion"] == "reg") {
@@ -95,7 +103,10 @@ if(empty($_POST["fechaInicio"]) && empty($_POST["fechaFinal"]))
             <input type="submit" value="enviar">
 
         </form>
-        
+        <form method="POST">
+                        <input type="hidden" name="volver" value="1">
+                        <input value="Volver" type="submit">
+                        </form>
                         
         </body>
         </html>
@@ -113,8 +124,8 @@ if(empty($_POST["fechaInicio"]) && empty($_POST["fechaFinal"]))
         }
         file_put_contents("auditoria.txt", $contenido);
         $_POST["opcion"] = "";
-        header ("Content-Disposition: attachment; filename=auditorias.txt");
-        header ("Content-Type: application-html");
-        readfile("auditorias.txt");
+        header ("Content-Disposition: attachment; filename=auditoria.txt");
+        header ("Content-Type: application/octet-stream");
+        readfile("auditoria.txt");
     }
 }
