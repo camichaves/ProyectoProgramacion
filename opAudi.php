@@ -1,46 +1,62 @@
-<?php
-session_start();
-//Conecto la base de datos
-$usuario="root";
-$clave="";
-$bd="programacioni";
-$servidor="localhost";
-$conexion = new PDO("mysql:host=$servidor;dbname=$bd",$usuario,$clave);
-
-$hora = date('j-G');
-$session_id = session_id();
-$token = hash('sha256', $hora.$session_id);
-
-
-if( $_SESSION['rol']!="ad" || $_SESSION['token']!=$token ){ 
-
-session_destroy();
-header("location: http://localhost/proyProg1/login.php");
-
-die();
-}
-
-
-
-
-if (empty($_POST['opcion']) || !empty($_POST['volver'])){
-    ?>
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Auditorias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="ops.css">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </head>
 <body>
+        <?php
+        session_start();
+        //Conecto la base de datos
+        $usuario="root";
+        $clave="";
+        $bd="programacioni";
+        $servidor="localhost";
+        $conexion = new PDO("mysql:host=$servidor;dbname=$bd",$usuario,$clave);
+
+        $hora = date('j-G');
+        $session_id = session_id();
+        $token = hash('sha256', $hora.$session_id);
 
 
-    <form method="POST">                  
-    <input type="hidden" name="opcion" value="reg">
-    <input value="Ver Registros de Auditoria" type="submit">
-</form>
-<form method="POST">
-    <input type="hidden" name="opcion" value="arch">
-    <input value="Descargar archivo de auditorias" type="submit">
-</form>
-<?php
+        if( $_SESSION['rol']!="ad" || $_SESSION['token']!=$token ){ 
+
+        session_destroy();
+        header("location: http://localhost/proyProg1/login.php");
+
+        die();
+        }
+
+
+
+
+        if (empty($_POST['opcion']) || !empty($_POST['volver'])){
+            ?>
+    <a href="mainadmin.php" class="btn btn-hot text-capitalize btn-xs">Menu Principal</a>
+     <div class="well text-center">
+        <form method="POST">                  
+            <input type="hidden" name="opcion" value="reg">
+            <input class="btn btn-hot text-uppercase btn-lg" value="Ver Registros de Auditoria" type="submit">
+        </form>
+        <p></p>
+        <form method="POST">
+            <input type="hidden" name="opcion" value="arch">
+            <input class="btn btn-sunny text-uppercase btn-lg" value="Descargar archivo de auditorias" type="submit">
+        </form>
+    </div>
+       
+       
+
+        
+        
+        <?php
 
 }else if($_POST["opcion"] == "reg") {
     ?>
@@ -131,6 +147,5 @@ if(empty($_POST["fechaInicio"]) && empty($_POST["fechaFinal"]))
 
 }
 ?>
-<li><a href="mainadmin.php"><i class="fa fa-bar-chart-o fa-fw"></i>Menu Principal</a></li>
 </body>
 </html>
