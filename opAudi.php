@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Auditorias</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="ops.css">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
-</head>
-<body>
-        <?php
+<?php
         session_start();
         //Conecto la base de datos
         $usuario="root";
@@ -39,6 +25,20 @@
 
         if (empty($_POST['opcion']) || !empty($_POST['volver'])){
             ?>
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <title>Auditorias</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" type="text/css" media="screen" href="ops.css">
+                <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+                <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+                <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+            </head>
+            <body>
     <a href="mainadmin.php" class="btn btn-hot text-capitalize btn-xs">Menu Principal</a>
      <div class="well text-center">
         <form method="POST">                  
@@ -60,11 +60,20 @@
 
 }else if($_POST["opcion"] == "reg") {
     ?>
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
+    <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <title>Auditorias</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" type="text/css" media="screen" href="ops.css">
+                <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+                <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+                <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+            </head>
+            <body>
 
 <?php
     $sql = "SELECT * FROM auditoria";
@@ -72,7 +81,20 @@
     $ejecucionSQL->execute();
     $res = $ejecucionSQL->fetchAll();
     ?>
-    <table style="width:100%" border="1px solid black">
+    <section class="title-banner py-4 bg-success text-white" id="title-banner">
+    <div class="container">
+        <div class="row">
+            <h4 class="text-center">Auditorias</h4>
+        </div>
+    </div>
+</section>
+<form method="POST">
+                        <input type="hidden" name="volver" value="1">
+                        <input value="Volver" type="submit">
+                        </form>
+                        
+        </body>
+    <table  class="table">
         <tr>
             <th>ID</th>
             <th>Fecha de acceso</th>
@@ -147,5 +169,3 @@ if(empty($_POST["fechaInicio"]) && empty($_POST["fechaFinal"]))
 
 }
 ?>
-</body>
-</html>

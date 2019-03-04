@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 //Conecto la base de datos
 $usuario="root";
@@ -28,23 +27,28 @@ if( $_SESSION['rol']!="ad" || $_SESSION['token']!=$token ){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Main administrador</title>
+    <title>Main Administrador</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    
+    <link rel="stylesheet" type="text/css" media="screen" href="ops.css">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   
 </head>
 <body>
-    
-</body>
-</html>
-
+    <section class="title-banner py-4 bg-success text-white" id="title-banner">
+            <div class="container">
+                <div class="row">
+                    <h4 class="text-center">Menu Administrador</h4>
+                </div>
+            </div>
+        </section>
 <div class="container">
-    <div class="row">
+       
+    <div class="col-md-9 ">
+            Escoga una opcion:
+
+        <div class="row">
         <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a href="mainadmin.php"><i class="fa fa-home fa-fw"></i>Main</a></li>
@@ -54,8 +58,9 @@ if( $_SESSION['rol']!="ad" || $_SESSION['token']!=$token ){
                 
             </ul>
         </div>
-        <div class="col-md-9 well">
-            Escoga una opcion.
-        </div>
     </div>
+    </div>
+    
 </div>
+</body>
+</html>
